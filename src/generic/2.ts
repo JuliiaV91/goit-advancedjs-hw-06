@@ -20,4 +20,16 @@ function compare (top, bottom): AllType {
   }
 }
 
-export {};
+export { };
+
+function compare<T extends AllType, U extends AllType>(
+  top: Pick<T, 'name' | 'color'>,  // беремо тільки поля 'name' та 'color'
+  bottom: Pick<U, 'position' | 'weight'> // беремо тільки поля 'position' та 'weight'
+): AllType {
+  return {
+    name: top.name,
+    color: top.color,
+    position: bottom.position,
+    weight: bottom.weight,
+  }
+}
